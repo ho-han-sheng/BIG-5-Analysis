@@ -6,13 +6,13 @@ This is a personal project done on open-source data to get my feet wet in tidyin
 
 The raw data was obtained from http://openpsychometrics.org/_rawdata/BIG5.zip (n = 19719). Each row contained a string comprising participants' responses to demographic questions (e.g. Age, Race, Gender) and the IPIP Big-Five Factor Markers (Goldberg, 1992). 
 
-<insert image here>
+![](https://github.com/ho-han-sheng/BIG-5-Analysis/blob/master/images/Sample%20raw%20string.png)
 
 This is obviously unreadable and some reformatting is required before any analysis can be done. 
 
 My first tasks were then:
--To separate the individual responses in each string into their respective columns 
--To change all values of specific columns to be positively scaled. 
+- To separate the individual responses in each string into their respective columns 
+- To change all values of specific columns to be positively scaled. 
 
 Some items (e.g. E2 I don't talk a lot.) are negatively scaled. That is on the five-point scale used (1=Disagree, 3=Neutral, 5=Agree), scoring a 5 would actually mean scoring lower on the extraversion trait. 
 
