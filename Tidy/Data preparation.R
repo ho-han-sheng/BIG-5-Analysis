@@ -33,10 +33,23 @@ NegtoPos <- function(a) {
   a = abs(a - 6)
 }
 
-table2 <- table1 %>% mutate(across(negscaled, ~NegtoPos(.)))
+table2 <- table1 %>% mutate(across(all_of(negscaled), ~NegtoPos(.)))
+
+## Recode numerical codes into keywords
+
+table3 <- table2 %>% mutate(gender = recode(gender, `1` = "Male", `2` = "Female", `3` = "Other", `0` = "Missed"))
+table3 <- table3 %>% mutate(hand = recode(hand, `1` = "Right", `2` = "Left", `3` = "Both", `0` = "Missed"))
+table3 <- table3 %>% mutate(engnat = recode(engnat, `1` = "Yes", `2` = "No", `0` = "Missed"))
+table3 <- table3 %>% mutate(race = recode(race, `1` = "Mixed", `2` = "Arctic", `3` = "European", `4` = "Indian", `5` = "Middle East", `6` = "North African and Other", `7` = "Indigenous Australian", `8` = "Native American", `9` = "North East Asian", `10` = "Pacific", `11` = "South East Asian", `12` = "West African", `13` = "Other", `0` = "Missed"))
 
 ## Export csv file
 write.csv(table2, file = "Data Output/tidy raw data.csv", sep = ",")
+write.csv(table3, file = "Data Output/recode tidy data.csv", sep = ",")
 
 
-
+## Summary statistics
+summary(table3)
+table(table3$race)
+table(table3$engnat)
+table(table3$gender)
+table(table3$hand)
